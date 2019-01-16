@@ -24,6 +24,7 @@ namespace KatlaSport.Services.ProductManagement
         public int CategoryId { get; set; }
 
         // TODO STEP 2 - Add "Description", "ManufacturerCode" and "Price" properties here.
+
         /// <summary>
         /// Gets or sets a product description.
         /// </summary>
