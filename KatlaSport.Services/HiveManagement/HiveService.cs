@@ -29,7 +29,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <inheritdoc/>
-        public async Task<List<HiveListItem>> GetHives()
+        public async Task<List<HiveListItem>> GetHivesAsync()
         {
             var dbHives = await _context.Hives.OrderBy(h => h.Id).ToArrayAsync();
             var hives = dbHives.Select(h => Mapper.Map<HiveListItem>(h)).ToList();
@@ -43,7 +43,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <inheritdoc/>
-        public async Task<Hive> GetHive(int hiveId)
+        public async Task<Hive> GetHiveAsync(int hiveId)
         {
             var dbHives = await _context.Hives.Where(h => h.Id == hiveId).ToArrayAsync();
 
@@ -56,7 +56,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <inheritdoc/>
-        public async Task<Hive> CreateHive(UpdateHiveRequest createRequest)
+        public async Task<Hive> CreateHiveAsync(UpdateHiveRequest createRequest)
         {
             var dbHives = await _context.Hives.Where(h => h.Code == createRequest.Code).ToArrayAsync();
 
@@ -76,7 +76,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <inheritdoc/>
-        public async Task<Hive> UpdateHive(int hiveId, UpdateHiveRequest updateRequest)
+        public async Task<Hive> UpdateHiveAsync(int hiveId, UpdateHiveRequest updateRequest)
         {
             var dbHives = await _context.Hives.Where(p => p.Code == updateRequest.Code && p.Id != hiveId).ToArrayAsync();
             if (dbHives.Length > 0)
@@ -101,7 +101,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <inheritdoc/>
-        public async Task DeleteHive(int hiveId)
+        public async Task DeleteHiveAsync(int hiveId)
         {
             var dbHives = await _context.Hives.Where(p => p.Id == hiveId).ToArrayAsync();
             if (dbHives.Length == 0)
@@ -120,7 +120,7 @@ namespace KatlaSport.Services.HiveManagement
         }
 
         /// <inheritdoc/>
-        public async Task SetStatus(int hiveId, bool deletedStatus)
+        public async Task SetStatusAsync(int hiveId, bool deletedStatus)
         {
             var dbHives = await _context.Hives.Where(c => hiveId == c.Id).ToArrayAsync();
 
