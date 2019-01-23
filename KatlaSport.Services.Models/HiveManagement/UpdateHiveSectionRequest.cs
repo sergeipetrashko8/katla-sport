@@ -1,5 +1,8 @@
-﻿namespace KatlaSport.Services.HiveManagement
+﻿using FluentValidation.Attributes;
+
+namespace KatlaSport.Services.HiveManagement
 {
+    [Validator(typeof(UpdateHiveSectionRequestValidator))]
     public class UpdateHiveSectionRequest
     {
         public string Name { get; set; }
